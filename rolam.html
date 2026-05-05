@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rólam – Benkő Bea Pilates</title>
+  <meta name="description" content="Ismerd meg Benkő Beát, Pilates oktatót.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ==================== NAVIGÁCIÓ ==================== -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">Benkő <em>Bea</em></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="orarend.html">Órarend</a></li>
+      <li><a href="helyszinek.html">Helyszínek</a></li>
+      <li><a href="rolam.html" class="active">Rólam</a></li>
+      <li><a href="orarend.html" class="nav-cta">Foglalj helyet</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ==================== TARTALOM ==================== -->
+<div class="container">
+  <div class="about-grid">
+
+    <!-- Bal: kép -->
+    <div class="about-img-wrap">
+      <div class="about-img-glow"></div>
+      <!--
+        HA VAN FOTÓD: töröld az about-img-placeholder div-et és vedd ki ezt:
+        <img src="kepek/trainer.jpg" alt="Benkő Bea" width="800" height="800">
+      -->
+      <div class="about-img-placeholder">
+        <span class="emoji">🧘</span>
+        <span>Ide kerül a fotód<br><small>src="kepek/trainer.jpg"</small></span>
+      </div>
+    </div>
+
+    <!-- Jobb: szöveg -->
+    <div>
+      <span class="about-label">Pilates oktató</span>
+      <h1 class="about-name">Benkő Bea</h1>
+
+      <!-- ============================================
+           IDE ÍRD BE A BEMUTATKOZÓ SZÖVEGET
+           ============================================ -->
+      <p class="about-bio">Benkő Bea vagyok, csoportos Pilates oktató, Gerinc trainer és Senior trainer.
+
+Már 3 éve tartok órákat, jelenleg Nyírpazonyban, Nyíregyházán és Rozsrétszőlőn várom a mozogni vágyókat.
+
+Számomra a Pilates nem csak mozgás, hanem igazi „énidő" is, ahol feltöltődhetsz testileg és lelkileg egyaránt. Óráimon egy támogató, jó hangulatú közösség alakult ki, ahol mindenki a saját tempójában fejlődhet.
+
+Szeretettel várlak!</p>
+
+      <!-- ============================================
+           ELÉRHETŐSÉGEK – írd át!
+           ============================================ -->
+      <div class="about-contact">
+        <p>✉ benkobea@gmail.com</p>
+        <p>☎ +36 XX XXX XXXX</p><!-- IDE ÍRD BE A TELEFONSZÁMODAT -->
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="container">
+    <strong>Benkő Bea</strong> – Pilates · Gerinc Trainer · Senior Trainer<br>
+    <span style="margin-top:6px;display:block">© 2026 · Minden jog fenntartva</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

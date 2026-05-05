@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Órarend – Benkő Bea Pilates</title>
+  <meta name="description" content="Aktuális Pilates órák és szabad helyek.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ==================== NAVIGÁCIÓ ==================== -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">Benkő <em>Bea</em></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="orarend.html" class="active">Órarend</a></li>
+      <li><a href="helyszinek.html">Helyszínek</a></li>
+      <li><a href="rolam.html">Rólam</a></li>
+      <li><a href="orarend.html" class="nav-cta">Foglalj helyet</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ==================== TARTALOM ==================== -->
+<div class="container" style="padding-top: 64px; padding-bottom: 80px;">
+
+  <div class="page-header">
+    <h1>Órarend</h1>
+    <p>Foglalj helyet egy szabad időpontra.</p>
+  </div>
+
+  <!-- Filter gombok -->
+  <div class="filter-row" id="filterRow">
+    <button class="filter-btn active" onclick="filterSessions('all', this)">Összes</button>
+    <!-- A helyszín gombok automatikusan generálódnak -->
+  </div>
+
+  <!-- Időpontok listája -->
+  <div class="sessions-wrap" id="sessionsList">
+    <!-- JavaScript tölti be -->
+  </div>
+
+</div>
+
+<!-- ==================== FOGLALÁS MODAL ==================== -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h2>Időpontfoglalás</h2>
+
+    <div class="modal-session-info">
+      <strong id="modalSessionName">—</strong>
+      <span id="modalSessionDetails">—</span>
+    </div>
+
+    <div class="form-group">
+      <label>Teljes neve <span class="req">*</span></label>
+      <input type="text" id="fName" placeholder="pl. Kovács Anna">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Email cím <span class="req">*</span></label>
+        <input type="email" id="fEmail" placeholder="anna@email.hu">
+      </div>
+      <div class="form-group">
+        <label>Telefonszám</label>
+        <input type="tel" id="fPhone" placeholder="+36 XX XXX XXXX">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Résztvevők száma</label>
+      <select id="fParticipants">
+        <option value="1">1 fő</option>
+        <option value="2">2 fő</option>
+        <option value="3">3 fő</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Megjegyzés</label>
+      <textarea id="fNote" placeholder="Bármilyen kérdés, kérés..."></textarea>
+    </div>
+
+    <button class="form-submit" id="submitBtn" onclick="submitBooking()">
+      Foglalás küldése →
+    </button>
+    <div class="success-box" id="successBox">
+      ✓ Köszönöm! Hamarosan visszaigazolom a foglalásodat.
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="container">
+    <strong>Benkő Bea</strong> – Pilates · Gerinc Trainer · Senior Trainer<br>
+    <span style="margin-top:6px;display:block">© 2025 · Minden jog fenntartva</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

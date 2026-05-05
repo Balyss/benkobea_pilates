@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Helyszínek – Benkő Bea Pilates</title>
+  <meta name="description" content="Pilates órák Nyírpazonyban, Human-Net Házban, Mentorálláson és Rozsrétszőlőben.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ==================== NAVIGÁCIÓ ==================== -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">Benkő <em>Bea</em></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="orarend.html">Órarend</a></li>
+      <li><a href="helyszinek.html" class="active">Helyszínek</a></li>
+      <li><a href="rolam.html">Rólam</a></li>
+      <li><a href="orarend.html" class="nav-cta">Foglalj helyet</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ==================== TARTALOM ==================== -->
+<div class="container" style="padding-top: 64px; padding-bottom: 80px;">
+
+  <div class="page-header">
+    <h1>Helyszínek</h1>
+    <p>Válassz egy helyszínt és nézd meg az aktuális órarendet.</p>
+  </div>
+
+  <!-- ============================================================
+       HELYSZÍNEK – szerkeszd a neveket, címeket, kapacitást!
+       ============================================================ -->
+  <div class="locations-grid">
+
+    <div class="loc-card">
+      <div class="loc-card-top">
+        <h2>Nyírpazony</h2>
+        <span class="loc-price-tag">2 500 Ft</span>
+      </div>
+      <p class="loc-address">📍 Nyírpazony, [pontos cím]</p><!-- IDE ÍRD BE A PONTOS CÍMET -->
+      <p class="loc-capacity">Maximum 15 fő óránként</p>
+      <a href="orarend.html?helyszin=Pilates%20Ny%C3%ADrpazony" class="btn btn-outline btn-sm">Időpontok →</a>
+    </div>
+
+    <div class="loc-card">
+      <div class="loc-card-top">
+        <h2>Human-Net Ház</h2>
+        <span class="loc-price-tag">2 500 Ft</span>
+      </div>
+      <p class="loc-address">📍 Nyíregyháza, [pontos cím]</p><!-- IDE ÍRD BE A PONTOS CÍMET -->
+      <p class="loc-capacity">Maximum 22 fő óránként</p>
+      <a href="orarend.html?helyszin=Pilates%20Human-Net%20H%C3%A1z" class="btn btn-outline btn-sm">Időpontok →</a>
+    </div>
+
+    <div class="loc-card">
+      <div class="loc-card-top">
+        <h2>Mentorállás</h2>
+        <span class="loc-price-tag">2 500 Ft</span>
+      </div>
+      <p class="loc-address">📍 [pontos cím]</p><!-- IDE ÍRD BE A PONTOS CÍMET -->
+      <p class="loc-capacity">Maximum 12 fő óránként</p>
+      <a href="orarend.html?helyszin=Pilates%20Mentor%C3%A1ll%C3%A1s" class="btn btn-outline btn-sm">Időpontok →</a>
+    </div>
+
+    <div class="loc-card">
+      <div class="loc-card-top">
+        <h2>Rozsrétszőlő</h2>
+        <span class="loc-price-tag">2 500 Ft</span>
+      </div>
+      <p class="loc-address">📍 Nyíregyháza, Rozsrétszőlő, [pontos cím]</p><!-- IDE ÍRD BE A PONTOS CÍMET -->
+      <p class="loc-capacity">Maximum 15 fő óránként</p>
+      <a href="orarend.html?helyszin=Pilates%20Rozsr%C3%A9tsz%C5%91l%C5%91" class="btn btn-outline btn-sm">Időpontok →</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="container">
+    <strong>Benkő Bea</strong> – Pilates · Gerinc Trainer · Senior Trainer<br>
+    <span style="margin-top:6px;display:block">© 2025 · Minden jog fenntartva</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

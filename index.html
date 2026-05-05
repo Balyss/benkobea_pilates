@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benkő Bea Pilates – Foglalj órát online</title>
+  <meta name="description" content="Pilates órák Benkő Beával. Foglalj helyet a következő órádra Nyírpazonyban és a környéken.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ==================== NAVIGÁCIÓ ==================== -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">Benkő <em>Bea</em></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="orarend.html">Órarend</a></li>
+      <li><a href="helyszinek.html">Helyszínek</a></li>
+      <li><a href="rolam.html">Rólam</a></li>
+      <li><a href="orarend.html" class="nav-cta">Foglalj helyet</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="container hero-grid">
+
+    <!-- Bal oldal: szöveg -->
+    <div>
+      <div class="hero-badge">✿ Tudatos mozgás</div>
+      <h1>
+        Pilates,<br>
+        ami <em>megérint</em><br>
+        testet és lelket.
+      </h1>
+      <p class="hero-desc">
+        Csatlakozz heti óráimhoz Nyíregyházán és környékén.
+        Kis csoportos, személyre szabott foglalkozások,
+        ahol a légzés és a tartás találkozik.
+      </p>
+      <div class="hero-buttons">
+        <a href="orarend.html" class="btn btn-primary">Órarend megnézése</a>
+        <a href="rolam.html" class="btn btn-outline">Rólam</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <span class="hero-stat-num">2 500 Ft</span>
+          <span class="hero-stat-label">alkalom</span>
+        </div>
+        <div>
+          <span class="hero-stat-num">4</span>
+          <span class="hero-stat-label">helyszín</span>
+        </div>
+        <div>
+          <span class="hero-stat-num">3+</span>
+          <span class="hero-stat-label">év tapasztalat</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jobb oldal: kép -->
+    <div class="hero-img-wrap">
+      <div class="hero-img-glow"></div>
+      <!--
+        HA VAN FOTÓD: töröld a hero-img-placeholder div-et
+        és vedd ki ezt a kommentet:
+        <img src="kepek/hero.jpg" alt="Pilates óra" width="800" height="600">
+      -->
+      <div class="hero-img-placeholder">
+        <span class="emoji">🧘</span>
+        <span>Ide kerül a hero fotó<br><small>src="kepek/hero.jpg"</small></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== HELYSZÍNEK PREVIEW ==================== -->
+<section class="section-sm">
+  <div class="container">
+    <div class="section-header">
+      <h2>Helyszínek a környékben</h2>
+      <p>Négy szeretett otthonom — válaszd a hozzád legközelebbit.</p>
+    </div>
+    <div class="cards-grid">
+      <a class="card card-link" href="orarend.html?helyszin=Pilates%20Nyírpazony">
+        <div class="card-icon">✦</div>
+        <h3>Nyírpazony</h3>
+        <p class="card-price">2 500 Ft / alkalom</p>
+      </a>
+      <a class="card card-link" href="orarend.html?helyszin=Pilates%20Human-Net%20Ház">
+        <div class="card-icon">✦</div>
+        <h3>Human-Net Ház</h3>
+        <p class="card-price">2 500 Ft / alkalom</p>
+      </a>
+      <a class="card card-link" href="orarend.html?helyszin=Pilates%20Mentorállás">
+        <div class="card-icon">✦</div>
+        <h3>Rozsrétszőlő</h3>
+        <p class="card-price">2 500 Ft / alkalom</p>
+      </a>
+      <a class="card card-link" href="orarend.html?helyszin=Pilates%20Rozsrétszőlő">
+        <div class="card-icon">✦</div>
+        <h3>Mentorállás</h3>
+        <p class="card-price">2 500 Ft / alkalom</p>
+      </a>
+    </div>
+    <div class="text-center mt-10">
+      <a href="helyszinek.html" class="link-sage">Minden helyszín részletei →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="container">
+    <strong>Benkő Bea</strong> – Pilates · Gerinc Trainer · Senior Trainer<br>
+    <span style="margin-top:6px;display:block">© 2026 · Minden jog fenntartva</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
