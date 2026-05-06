@@ -252,6 +252,25 @@ button { font-family: inherit; cursor: pointer; }
 }
 .form-submit:hover { background: var(--foreground); }
 .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* Fizetési mód */
+.payment-options { display: flex; flex-direction: column; gap: 10px; }
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.payment-option:has(input:checked) {
+  border-color: var(--sage-deep);
+  background: var(--sage-light);
+}
+.payment-option input[type="radio"] { accent-color: var(--sage-deep); width: 16px; height: 16px; }
+.payment-label { font-size: 14px; font-weight: 500; }
 .success-box {
   display: none; background: var(--sage-light); border: 1px solid rgba(78,122,96,0.2);
   border-radius: var(--radius); padding: 18px; text-align: center;

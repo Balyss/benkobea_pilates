@@ -80,6 +80,19 @@
       </select>
     </div>
     <div class="form-group">
+      <label>Fizetési mód</label>
+      <div class="payment-options">
+        <label class="payment-option">
+          <input type="radio" name="payment" id="paymentCash" value="cash" checked>
+          <span class="payment-label">💵 Helyszíni fizetés</span>
+        </label>
+        <label class="payment-option" id="paymentCard" style="display:none">
+          <input type="radio" name="payment" id="paymentCardRadio" value="card">
+          <span class="payment-label">💳 Kártyás fizetés</span>
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
       <label>Megjegyzés</label>
       <textarea id="fNote" placeholder="Bármilyen kérdés, kérés..."></textarea>
     </div>
@@ -97,7 +110,7 @@
 <footer class="footer">
   <div class="container">
     <strong>Benkő Bea</strong> – Pilates · Gerinc Trainer · Senior Trainer<br>
-    <span style="margin-top:6px;display:block">© 2025 · Minden jog fenntartva</span>
+    <span style="margin-top:6px;display:block">© 2026 · Minden jog fenntartva</span>
   </div>
 </footer>
 

@@ -1,50 +1,37 @@
 /* ====================================================
    BEA PILATES – Fő JavaScript fájl
-   ====================================================
-
-   TARTALOM:
-   1. IDŐPONTOK – itt tudod szerkeszteni az órákat
-   2. Órarend megjelenítés + szűrés
-   3. Foglalási modal
-   4. EmailJS – email értesítő
-   5. Navigáció (hamburger menü)
-
    ==================================================== */
 
 
 /* ====================================================
    1. IDŐPONTOK SZERKESZTÉSE
-   ----------------------------------------------------
-   Ide vedd fel az órákat. Minden időpont egy objektum:
-
-   {
-     id: egyedi szám (ne változtasd),
-     location: "helyszín neve" (pontosan ahogy a filterben megjelenik),
-     date: "ÉÉÉÉ-HH-NN",
-     startTime: "ÓÓ:PP",
-     durationMin: perc (pl. 60),
-     priceHuf: ár forintban,
-     maxSpots: max létszám,
-     bookedSpots: már foglalt helyek száma (növeld ha valaki foglal),
-   }
-
    ==================================================== */
 
 const SESSIONS = [
   {
-  id: 5,
-  location: "Pilates Nyírpazony",
-  date: "2026-05-15",
-  startTime: "09:00",
-  durationMin: 60,
-  priceHuf: 2500,
-  maxSpots: 15,
-  bookedSpots: 0,
+    id: 1,
+    location: "Pilates Nyírpazony",
+    date: "2026-05-15",
+    startTime: "09:00",
+    durationMin: 60,
+    priceHuf: 2500,
+    maxSpots: 15,
+    bookedSpots: 0,
   },
   {
-    id: 1,
+    id: 2,
     location: "Pilates Human-Net Ház",
-    date: "2026-05-08",
+    date: "2026-05-10",
+    startTime: "10:00",
+    durationMin: 60,
+    priceHuf: 2500,
+    maxSpots: 22,
+    bookedSpots: 5,
+  },
+  {
+    id: 3,
+    location: "Pilates Rozsrétszőlő",
+    date: "2026-05-09",
     startTime: "17:30",
     durationMin: 60,
     priceHuf: 2500,
@@ -52,47 +39,59 @@ const SESSIONS = [
     bookedSpots: 3,
   },
   {
-    id: 2,
-    location: "Pilates Rozsrétszőlő",
-    date: "2026-05-09",
-    startTime: "10:00",
-    durationMin: 60,
-    priceHuf: 2500,
-    maxSpots: 22,
-    bookedSpots: 10,
-  },
-  {
-    id: 3,
+    id: 4,
     location: "Pilates Mentorállás",
     date: "2026-05-09",
     startTime: "17:00",
     durationMin: 60,
     priceHuf: 2500,
     maxSpots: 12,
-    bookedSpots: 12, // telt ház példa
+    bookedSpots: 4,
   },
-  {
-    id: 4,
-    location: "Pilates Human-Net Ház",
-    date: "2026-05-13",
-    startTime: "10:00",
-    durationMin: 60,
-    priceHuf: 2500,
-    maxSpots: 22,
-    bookedSpots: 5,
-  },
-  // ← IDE VEGYÉL FEL ÚJABB IDŐPONTOKAT UGYANÍGY
 ];
+
+/*
+   BARION FIZETÉSI LINKEK
+   Ha megvan a Barion fiókod, ide írd be az egyes
+   időpontokhoz tartozó fizetési linkeket.
+   Ha még nincs, hagyd üresen ("") – ilyenkor csak
+   a készpénzes opció jelenik meg.
+*/
+const BARION_LINKS = {
+  1: "", // Nyírpazony – pl. "https://secure.barion.com/Pay?Id=xxx"
+  2: "", // Human-Net Ház
+  3: "", // Rozsrétszőlő
+  4: "", // Mentorállás
+};
 
 
 /* ====================================================
-   2. ÓRAREND MEGJELENÍTÉS
+   2. SZABAD HELYEK (localStorage)
+   ==================================================== */
+
+function getExtraBooked(sessionId) {
+  const data = JSON.parse(localStorage.getItem("bea_bookings") || "{}");
+  return data[sessionId] || 0;
+}
+
+function addBooking(sessionId, participants) {
+  const data = JSON.parse(localStorage.getItem("bea_bookings") || "{}");
+  data[sessionId] = (data[sessionId] || 0) + parseInt(participants);
+  localStorage.setItem("bea_bookings", JSON.stringify(data));
+}
+
+function getFreeSpots(session) {
+  return session.maxSpots - session.bookedSpots - getExtraBooked(session.id);
+}
+
+
+/* ====================================================
+   3. ÓRAREND MEGJELENÍTÉS + SZŰRÉS
    ==================================================== */
 
 let activeFilter = "all";
 let selectedSession = null;
 
-// Magyar napok és hónapok
 const HU_DAYS   = ["vasárnap","hétfő","kedd","szerda","csütörtök","péntek","szombat"];
 const HU_MONTHS = ["január","február","március","április","május","június","július","augusztus","szeptember","október","november","december"];
 
@@ -108,7 +107,13 @@ function formatHUF(amount) {
 function buildFilterButtons() {
   const row = document.getElementById("filterRow");
   if (!row) return;
-  const locations = [...new Set(SESSIONS.map(s => s.location))];
+  const locations = [
+    "Pilates Nyírpazony",
+    "Pilates Human-Net Ház",
+    "Pilates Rozsrétszőlő",
+    "Pilates Mentorállás",
+  ].filter(loc => SESSIONS.some(s => s.location === loc));
+
   locations.forEach(loc => {
     const btn = document.createElement("button");
     btn.className = "filter-btn";
@@ -142,7 +147,6 @@ function renderSessions() {
     return;
   }
 
-  // Csoportosítás dátum szerint
   const grouped = {};
   filtered.forEach(s => {
     if (!grouped[s.date]) grouped[s.date] = [];
@@ -156,7 +160,7 @@ function renderSessions() {
     group.innerHTML = `<div class="day-label">${formatDate(date)}</div>`;
 
     sessions.forEach(s => {
-      const freeSpots = s.maxSpots - s.bookedSpots;
+      const freeSpots = getFreeSpots(s);
       const isFull = freeSpots <= 0;
       const row = document.createElement("div");
       row.className = "session-row";
@@ -167,7 +171,7 @@ function renderSessions() {
           <div class="session-meta">${s.durationMin} perc · ${formatHUF(s.priceHuf)}</div>
         </div>
         <div class="session-right">
-          <span class="badge ${isFull ? "badge-full" : "badge-free"}">
+          <span class="badge ${isFull ? "badge-full" : "badge-free"}" id="badge-${s.id}">
             ${isFull ? "Megtelt" : freeSpots + " szabad hely"}
           </span>
           ${!isFull ? `<button class="btn btn-primary btn-sm" onclick="openModal(${s.id})">Foglalás</button>` : ""}
@@ -180,10 +184,8 @@ function renderSessions() {
   });
 }
 
-// Oldal betöltésekor – ha van ?helyszin= a linkben, automatikusan szűr
 if (document.getElementById("sessionsList")) {
   buildFilterButtons();
-
   const params = new URLSearchParams(window.location.search);
   const preFilter = params.get("helyszin");
   if (preFilter) {
@@ -192,25 +194,29 @@ if (document.getElementById("sessionsList")) {
       btn.classList.toggle("active", btn.textContent === preFilter);
     });
   }
-
   renderSessions();
 }
 
 
 /* ====================================================
-   3. FOGLALÁSI MODAL
+   4. FOGLALÁSI MODAL
    ==================================================== */
 
 function openModal(sessionId) {
   selectedSession = SESSIONS.find(s => s.id === sessionId);
   if (!selectedSession) return;
 
-  const freeSpots = selectedSession.maxSpots - selectedSession.bookedSpots;
+  const freeSpots = getFreeSpots(selectedSession);
   document.getElementById("modalSessionName").textContent = selectedSession.location;
   document.getElementById("modalSessionDetails").textContent =
     `${formatDate(selectedSession.date)} · ${selectedSession.startTime} · ${freeSpots} szabad hely · ${formatHUF(selectedSession.priceHuf)}`;
 
-  // Reset
+  // Kártyás fizetés csak ha van Barion link
+  const hasBarion = !!BARION_LINKS[selectedSession.id];
+  document.getElementById("paymentCard").style.display = hasBarion ? "flex" : "none";
+  document.getElementById("paymentCash").checked = true;
+
+  // Form reset
   ["fName","fEmail","fPhone","fNote"].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.value = "";
@@ -218,6 +224,7 @@ function openModal(sessionId) {
   document.getElementById("fParticipants").value = "1";
   document.getElementById("successBox").style.display = "none";
   document.getElementById("submitBtn").disabled = false;
+  document.getElementById("submitBtn").textContent = "Foglalás küldése →";
 
   document.getElementById("modalOverlay").classList.add("open");
   document.body.style.overflow = "hidden";
@@ -233,28 +240,17 @@ function closeModalOutside(e) {
   if (e.target === document.getElementById("modalOverlay")) closeModal();
 }
 
-// ESC gomb
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
 
 
 /* ====================================================
-   4. EMAIL KÜLDÉS – EmailJS
-   ----------------------------------------------------
-   BEÁLLÍTÁS:
-   a) Regisztrálj: https://www.emailjs.com (ingyenes)
-   b) Hozz létre egy "Email Service"-t (Gmail-lel)
-   c) Hozz létre egy "Email Template"-t ezekkel a változókkal:
-      {{from_name}}, {{from_email}}, {{phone}},
-      {{session_name}}, {{session_details}}, {{participants}}, {{note}}
-   d) Cseréld le az alábbi három értéket:
-
+   5. EMAIL KÜLDÉS + FOGLALÁS MENTÉSE
    ==================================================== */
 
-const EMAILJS_SERVICE_ID  = "service_jvwyshj";     // pl. "service_abc123"
-const EMAILJS_TEMPLATE_ID = "template_9pd2y7i";    // pl. "template_xyz789"
-const EMAILJS_PUBLIC_KEY  = "NzZH14UcrzzI98jCD";     // pl. "abcDEFghiJKL"
+const EMAILJS_SERVICE_ID  = "service_jvwyshj";
+const EMAILJS_TEMPLATE_ID = "template_hxxoxsj";
+const EMAILJS_PUBLIC_KEY  = "NzZH14UcrzzI98jCD";
 
-// EmailJS betöltése
 (function() {
   const script = document.createElement("script");
   script.src = "https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js";
@@ -263,11 +259,20 @@ const EMAILJS_PUBLIC_KEY  = "NzZH14UcrzzI98jCD";     // pl. "abcDEFghiJKL"
 })();
 
 async function submitBooking() {
-  const name  = document.getElementById("fName").value.trim();
-  const email = document.getElementById("fEmail").value.trim();
+  const name         = document.getElementById("fName").value.trim();
+  const email        = document.getElementById("fEmail").value.trim();
+  const participants = parseInt(document.getElementById("fParticipants").value);
+  const paymentCash  = document.getElementById("paymentCash").checked;
+  const paymentMethod = paymentCash ? "Helyszínen készpénz" : "Online kártyás fizetés";
 
   if (!name || !email) {
     alert("Kérlek add meg a neved és email címed!");
+    return;
+  }
+
+  const freeSpots = getFreeSpots(selectedSession);
+  if (participants > freeSpots) {
+    alert(`Sajnos csak ${freeSpots} szabad hely maradt!`);
     return;
   }
 
@@ -281,34 +286,40 @@ async function submitBooking() {
     phone:           document.getElementById("fPhone").value.trim() || "—",
     session_name:    selectedSession.location,
     session_details: document.getElementById("modalSessionDetails").textContent,
-    participants:    document.getElementById("fParticipants").value,
+    participants:    participants,
+    payment_method:  paymentMethod,
     note:            document.getElementById("fNote").value.trim() || "—",
-    to_email:        "balazsibalint2020@gmail.com", // ← EZT ÁTÍRHATOD BÁRMIKOR
+    to_email:        "balazsibalint2020@gmail.com",
   };
 
   try {
     await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
+    addBooking(selectedSession.id, participants);
+    renderSessions();
     document.getElementById("successBox").style.display = "block";
     btn.textContent = "Elküldve ✓";
+
+    // Ha kártyás fizetést választott → nyisd meg a Barion linket
+    if (!paymentCash && BARION_LINKS[selectedSession.id]) {
+      window.open(BARION_LINKS[selectedSession.id], "_blank");
+    }
   } catch (err) {
     console.error("EmailJS hiba:", err);
     btn.disabled = false;
     btn.textContent = "Foglalás küldése →";
-    alert("Hiba történt a küldés során. Kérlek próbáld újra, vagy írj emailt: balazsibalint2020@gmail.com");
+    alert("Hiba történt. Kérlek próbáld újra!");
   }
 }
 
 
 /* ====================================================
-   5. NAVIGÁCIÓ – hamburger menü (mobilon)
+   6. NAVIGÁCIÓ
    ==================================================== */
 
 function toggleMenu() {
-  const links = document.getElementById("navLinks");
-  links.classList.toggle("open");
+  document.getElementById("navLinks").classList.toggle("open");
 }
 
-// Kívülre kattintásra bezárul
 document.addEventListener("click", e => {
   const nav = document.querySelector(".nav");
   if (nav && !nav.contains(e.target)) {
