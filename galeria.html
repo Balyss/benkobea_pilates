@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galéria – Benkő Bea Pilates</title>
+  <meta name="description" content="Képek és videók Benkő Bea Pilates óráiról.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .gallery-grid {
+      columns: 3;
+      column-gap: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 16px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      background: var(--sand);
+    }
+    .gallery-item img,
+    .gallery-item video {
+      width: 100%;
+      display: block;
+      transition: transform 0.3s;
+    }
+    .gallery-item:hover img,
+    .gallery-item:hover video { transform: scale(1.03); }
+
+    .gallery-item .video-badge {
+      position: absolute;
+      top: 12px; left: 12px;
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 100px;
+      display: flex; align-items: center; gap: 5px;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 300;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-inner {
+      position: relative;
+      max-width: 900px;
+      max-height: 90vh;
+      width: 100%;
+    }
+    .lightbox-inner img,
+    .lightbox-inner video {
+      width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: var(--radius);
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 20px; right: 24px;
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+
+    /* Feltöltés gomb */
+    .upload-hint {
+      background: var(--sage-light);
+      border: 2px dashed var(--sage);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      color: var(--sage-deep);
+      font-size: 14px;
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .upload-hint .emoji { font-size: 32px; display: block; margin-bottom: 10px; }
+
+    @media (max-width: 768px) {
+      .gallery-grid { columns: 2; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid { columns: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">Benkő <em>Bea</em></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="orarend.html">Órarend</a></li>
+      <li><a href="helyszinek.html">Helyszínek</a></li>
+      <li><a href="galeria.html" class="active">Galéria</a></li>
+      <li><a href="rolam.html">Rólam</a></li>
+      <li><a href="orarend.html" class="nav-cta">Foglalj helyet</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- TARTALOM -->
+<div class="container" style="padding-top: 64px; padding-bottom: 80px;">
+
+  <div class="page-header">
+    <h1>Galéria</h1>
+    <p>Képek és videók az óráinkról.</p>
+  </div>
+
+  <!-- ================================================
+       IDE RAKD A KÉPEKET ÉS VIDEÓKAT!
+
+       KÉP hozzáadása:
+       <div class="gallery-item" onclick="openLightbox('kepek/foto1.jpg', 'image')">
+         <img src="kepek/foto1.jpg" alt="Pilates óra">
+       </div>
+
+       VIDEÓ hozzáadása:
+       <div class="gallery-item" onclick="openLightbox('kepek/video1.mp4', 'video')">
+         <video src="kepek/video1.mp4" muted playsinline></video>
+         <div class="video-badge">▶ Videó</div>
+       </div>
+
+       ================================================ -->
+
+  <div class="upload-hint">
+    <span class="emoji">📸</span>
+    <strong>Ide kerülnek a fotók és videók</strong><br>
+    Tedd a képeket/videókat a <code>kepek/</code> mappába,<br>
+    majd add hozzá őket az alábbi galériához a HTML-ben.
+  </div>
+
+  <div class="gallery-grid" id="galleryGrid">
+
+    <!-- PÉLDA ELEMEK – töröld ki és add hozzá a sajátjaid! -->
+    <div class="gallery-item" onclick="openLightbox('kepek/foto1.jpg', 'image')">
+      <img src="kepek/foto1.jpg" alt="Pilates óra 1"
+        onerror="this.parentElement.style.display='none'">
+    </div>
+    <div class="gallery-item" onclick="openLightbox('kepek/foto2.jpg', 'image')">
+      <img src="kepek/foto2.jpg" alt="Pilates óra 2"
+        onerror="this.parentElement.style.display='none'">
+    </div>
+    <div class="gallery-item" onclick="openLightbox('kepek/foto3.jpg', 'image')">
+      <img src="kepek/foto3.jpg" alt="Pilates óra 3"
+        onerror="this.parentElement.style.display='none'">
+    </div>
+
+  </div>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+  <div class="lightbox-inner" id="lightboxInner"></div>
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <strong>Benkő Bea</strong> – Pilates · Gerinc Trainer · Senior Trainer<br>
+    <span style="margin-top:6px;display:block">© 2025 · Minden jog fenntartva</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  function openLightbox(src, type) {
+    const inner = document.getElementById("lightboxInner");
+    if (type === "video") {
+      inner.innerHTML = `<video src="${src}" controls autoplay style="width:100%;border-radius:var(--radius)"></video>`;
+    } else {
+      inner.innerHTML = `<img src="${src}" alt="Galéria kép">`;
+    }
+    document.getElementById("lightbox").classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox() {
+    document.getElementById("lightbox").classList.remove("open");
+    document.getElementById("lightboxInner").innerHTML = "";
+    document.body.style.overflow = "";
+  }
+
+  function closeLightboxOutside(e) {
+    if (e.target === document.getElementById("lightbox")) closeLightbox();
+  }
+
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") closeLightbox();
+  });
+</script>
+</body>
+</html>
