@@ -98,19 +98,70 @@
         <h3>Human-Net Ház</h3>
         <p class="card-price">2 500 Ft / alkalom</p>
       </a>
-      <a class="card card-link" href="orarend.html?helyszin=Pilates%20Rozsr%C3%A9tsz%C5%91l%C5%91">
-        <div class="card-icon">✦</div>
-        <h3>Rozsrétszőlő</h3>
-        <p class="card-price">2 500 Ft / alkalom</p>
-      </a>
-      <a class="card card-link" href="orarend.html?helyszin=Pilates%20Mentor%C3%A1ll%C3%A1s">
+      <a class="card card-link" href="orarend.html?helyszin=Pilates%20Mentorállás">
         <div class="card-icon">✦</div>
         <h3>Mentorállás</h3>
+        <p class="card-price">2 500 Ft / alkalom</p>
+      </a>
+      <a class="card card-link" href="orarend.html?helyszin=Pilates%20Rozsrétszőlő">
+        <div class="card-icon">✦</div>
+        <h3>Rozsrétszőlő</h3>
         <p class="card-price">2 500 Ft / alkalom</p>
       </a>
     </div>
     <div class="text-center mt-10">
       <a href="helyszinek.html" class="link-sage">Minden helyszín részletei →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== VÉLEMÉNYEK ==================== -->
+<section style="padding: 60px 0; overflow: hidden; background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container" style="margin-bottom: 32px;">
+    <div class="section-header" style="margin-bottom: 0;">
+      <h2>Mit mondanak rólam?</h2>
+      <p>Valódi visszajelzések az óráimról</p>
+    </div>
+  </div>
+
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="marqueeTrack">
+
+      <div class="review-card">
+        <p class="review-text">„Imádom a pilatesz órákat, mert minden egyes óra feltölt: mozgás, vidámság, jó csapat, akik motiválják egymást."</p>
+        <span class="review-name">— Anna</span>
+      </div>
+
+      <div class="review-card">
+        <p class="review-text">„Csak pozitív tapasztalatom van. Sok szuper nyújtást mutattál, amit azóta mindig csinálok edzés után. Van olykor izomlázam a Pilates óra után — jó ha fáj!"</p>
+        <span class="review-name">— Zsófi</span>
+      </div>
+
+      <div class="review-card">
+        <p class="review-text">„Köszönöm, hogy ehhez a csoporthoz tartozhatok! Az óra fizikailag, szellemileg, lelkileg is feltölt — nagyon pozitív hatással van rám."</p>
+        <span class="review-name">— Éva</span>
+      </div>
+
+      <div class="review-card">
+        <p class="review-text">„A hétköznapjaim része lett másfél éve már. Segít az ülőmunka miatti fájdalmakat enyhíteni. Sokkal jobban érzem magam — kevesebb fájdalom, több mosoly!"</p>
+        <span class="review-name">— Kati</span>
+      </div>
+
+      <div class="review-card">
+        <p class="review-text">„A pilates a gerincem egészségének megóvása miatt nagyon fontos számomra. Bónuszként formásabb lett a fenekem és karcsúbb a derekam. Bea óráit a jókedv és a kemény munka egyszerre jellemzi!"</p>
+        <span class="review-name">— Viki</span>
+      </div>
+
+      <div class="review-card">
+        <p class="review-text">„Az egész testet megmozgató gyakorlatsorozat, de a végén nem köpöd ki a tüdődet, és vágysz a következő alkalomra. Bea a kezdőkre tyúkanyóként figyel — a tanulás sokkal könnyebb így."</p>
+        <span class="review-name">— Petra</span>
+      </div>
+
+      <div class="review-card">
+        <p class="review-text">„Nagyon jó hangulatban telnek az órák. Jó közösség kovácsolódott össze, örülünk hogy ilyen szakember segíti a mozgásunkat — tapasztaljuk magunkon a gyakorlatok eredményességét."</p>
+        <span class="review-name">— Ági</span>
+      </div>
+
     </div>
   </div>
 </section>
@@ -122,6 +173,66 @@
     <span style="margin-top:6px;display:block">© 2026 · Minden jog fenntartva</span>
   </div>
 </footer>
+
+<style>
+  .marquee-wrap {
+    overflow: hidden;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: marqueeScroll 40s linear infinite;
+  }
+
+  .marquee-wrap:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes marqueeScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .review-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) * 1.5);
+    padding: 24px 28px;
+    width: 320px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .review-text {
+    font-size: 14px;
+    color: var(--foreground);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .review-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--sage-deep);
+  }
+</style>
+
+<script>
+  // Duplázza meg a kártyákat hogy végtelen legyen a görgetés
+  (function() {
+    const track = document.getElementById("marqueeTrack");
+    if (!track) return;
+    const clone = track.innerHTML;
+    track.innerHTML += clone;
+  })();
+</script>
 
 <script src="script.js"></script>
 </body>
