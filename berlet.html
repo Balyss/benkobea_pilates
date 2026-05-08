@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bérletek – Énidőm Beával Pilates</title>
+  <meta name="description" content="Vásárolj Pilates bérletet Benkő Beától. 1 alkalmas, 5 alkalmas és 10 alkalmas bérletek.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    .berlet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 960px;
+      margin: 0 auto 60px;
+    }
+
+    .berlet-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) * 2);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+
+    .berlet-card:hover {
+      box-shadow: var(--shadow-soft);
+      transform: translateY(-4px);
+    }
+
+    .berlet-card.featured {
+      border-color: var(--sage-deep);
+      border-width: 2px;
+    }
+
+    .berlet-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--sage-deep);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 16px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .berlet-icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+    }
+
+    .berlet-name {
+      font-family: 'Fraunces', serif;
+      font-size: 26px;
+      color: var(--foreground);
+      margin-bottom: 6px;
+    }
+
+    .berlet-desc {
+      font-size: 14px;
+      color: var(--muted-fg);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .berlet-price {
+      font-family: 'Fraunces', serif;
+      font-size: 42px;
+      color: var(--sage-deep);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .berlet-price-sub {
+      font-size: 13px;
+      color: var(--muted-fg);
+      margin-bottom: 28px;
+    }
+
+    .berlet-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 32px;
+      flex: 1;
+    }
+
+    .berlet-features li {
+      font-size: 14px;
+      color: var(--muted-fg);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .berlet-features li::before {
+      content: "✓";
+      color: var(--sage-deep);
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .berlet-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border-radius: 100px;
+      background: var(--sage-deep);
+      color: #fff;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+
+    .berlet-btn:hover { background: var(--foreground); }
+
+    .berlet-btn.outline {
+      background: transparent;
+      color: var(--sage-deep);
+      border: 1.5px solid rgba(78,122,96,0.4);
+    }
+    .berlet-btn.outline:hover {
+      background: var(--sage-deep);
+      color: #fff;
+    }
+
+    /* Notion info szekció */
+    .notion-info {
+      background: var(--sage-light);
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) * 1.5);
+      padding: 28px 32px;
+      max-width: 720px;
+      margin: 0 auto 60px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .notion-info-icon { font-size: 28px; flex-shrink: 0; }
+
+    .notion-info h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      color: var(--sage-deep);
+      margin-bottom: 8px;
+    }
+
+    .notion-info p {
+      font-size: 14px;
+      color: var(--muted-fg);
+      line-height: 1.7;
+    }
+
+    /* Placeholder gomb ha nincs még Barion link */
+    .no-barion {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border-radius: 100px;
+      background: var(--sand);
+      color: var(--muted-fg);
+      text-align: center;
+      font-size: 14px;
+      border: none;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo-img"><img src="kepek/logo.png" alt="Énidőm Beával Pilates"></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="orarend.html">Órarend</a></li>
+      <li><a href="berlet.html" class="active">Bérletek</a></li>
+      <li><a href="helyszinek.html">Helyszínek</a></li>
+      <li><a href="galeria.html">Galéria</a></li>
+      <li><a href="rolam.html">Rólam</a></li>
+      <li><a href="orarend.html" class="nav-cta">Foglalj helyet</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="container" style="padding-top: 64px; padding-bottom: 80px;">
+
+  <div class="page-header">
+    <h1>Bérletek</h1>
+    <p>Válassz bérletet és fizess online — utána már csak mozogni kell!</p>
+  </div>
+
+  <div class="berlet-grid">
+
+    <!-- 1 ALKALMAS -->
+    <div class="berlet-card">
+      <div class="berlet-icon">🎯</div>
+      <div class="berlet-name">1 alkalmas</div>
+      <div class="berlet-desc">Próbáld ki mielőtt elköteleződnél — tökéletes első alkalomra.</div>
+      <div class="berlet-price">2 500 Ft</div>
+      <div class="berlet-price-sub">/ alkalom</div>
+      <ul class="berlet-features">
+        <li>1 Pilates óra bármelyik helyszínen</li>
+        <li>Nincs lejárati idő</li>
+        <li>Azonnali visszaigazolás emailben</li>
+      </ul>
+      <!--
+        HA MEGVAN A BARION LINK, cseréld ki ezt a gombot:
+        <a href="BARION_LINK_IDE" class="berlet-btn" target="_blank">Megveszem →</a>
+      -->
+      <span class="no-barion">Hamarosan elérhető</span>
+    </div>
+
+    <!-- 5 ALKALMAS -->
+    <div class="berlet-card featured">
+      <div class="berlet-badge">Legnépszerűbb</div>
+      <div class="berlet-icon">⭐</div>
+      <div class="berlet-name">5 alkalmas</div>
+      <div class="berlet-desc">A legjobb választás ha rendszeresen szeretnél mozogni.</div>
+      <div class="berlet-price">12 500 Ft</div>
+      <div class="berlet-price-sub">2 500 Ft / alkalom</div>
+      <ul class="berlet-features">
+        <li>5 Pilates óra bármelyik helyszínen</li>
+        <li>Nincs lejárati idő</li>
+        <li>Azonnali visszaigazolás emailben</li>
+        <li>Alkalmak nyomon követése</li>
+      </ul>
+      <!--
+        HA MEGVAN A BARION LINK, cseréld ki ezt a gombot:
+        <a href="BARION_LINK_IDE" class="berlet-btn" target="_blank">Megveszem →</a>
+      -->
+      <span class="no-barion">Hamarosan elérhető</span>
+    </div>
+
+    <!-- 10 ALKALMAS -->
+    <div class="berlet-card">
+      <div class="berlet-icon">💪</div>
+      <div class="berlet-name">10 alkalmas</div>
+      <div class="berlet-desc">Hosszú távú elköteleződés — a legjobb ár-érték arány.</div>
+      <div class="berlet-price">25 000 Ft</div>
+      <div class="berlet-price-sub">2 500 Ft / alkalom</div>
+      <ul class="berlet-features">
+        <li>10 Pilates óra bármelyik helyszínen</li>
+        <li>Nincs lejárati idő</li>
+        <li>Azonnali visszaigazolás emailben</li>
+        <li>Alkalmak nyomon követése</li>
+      </ul>
+      <!--
+        HA MEGVAN A BARION LINK, cseréld ki ezt a gombot:
+        <a href="BARION_LINK_IDE" class="berlet-btn" target="_blank">Megveszem →</a>
+      -->
+      <span class="no-barion">Hamarosan elérhető</span>
+    </div>
+
+  </div>
+
+  <!-- Hogyan működik -->
+  <div class="notion-info">
+    <div class="notion-info-icon">ℹ️</div>
+    <div>
+      <h3>Hogyan működik a bérlet?</h3>
+      <p>Vásárlás után emailben visszaigazolást kapsz. Az órákon Beánál kell jelezni hogy bérleted van — ő nyilvántartja hány alkalmad maradt. A bérlethez nincs lejárati idő, bármelyik helyszínen felhasználható.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <strong>Benkő Bea</strong> – Pilates · Gerinc Trainer · Senior Trainer<br>
+    <span style="margin-top:6px;display:block">© 2026 · Minden jog fenntartva</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
