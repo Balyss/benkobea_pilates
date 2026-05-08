@@ -112,8 +112,6 @@ function buildFilterButtons() {
     "Pilates Nyírpazony",
     "Pilates Rozsrétszőlő",
     "Pilates Mentorállás",
-    "Pilates Rozsrétszőlő",
-    "Pilates Mentorállás",
   ].filter(loc => SESSIONS.some(s => s.location === loc));
 
   locations.forEach(loc => {
