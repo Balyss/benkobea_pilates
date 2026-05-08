@@ -165,7 +165,8 @@ button { font-family: inherit; cursor: pointer; }
 .sessions-wrap { max-width: 760px; margin: 0 auto; }
 
 /* ================================================ RÓLAM */
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; padding: 64px 0; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; padding: 64px 0; }
+.about-grid > * { min-width: 0; overflow: hidden; }
 .about-img-wrap { position: relative; }
 .about-img-glow {
   position: absolute; inset: -12px;
