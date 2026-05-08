@@ -108,8 +108,10 @@ function buildFilterButtons() {
   const row = document.getElementById("filterRow");
   if (!row) return;
   const locations = [
-    "Pilates Nyírpazony",
     "Pilates Human-Net Ház",
+    "Pilates Nyírpazony",
+    "Pilates Rozsrétszőlő",
+    "Pilates Mentorállás",
     "Pilates Rozsrétszőlő",
     "Pilates Mentorállás",
   ].filter(loc => SESSIONS.some(s => s.location === loc));
