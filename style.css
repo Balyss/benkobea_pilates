@@ -302,3 +302,6 @@ button { font-family: inherit; cursor: pointer; }
   .session-row { flex-direction: column; align-items: flex-start; }
   .session-right { width: 100%; justify-content: space-between; }
 }
+/* Logó a navigációban */
+.nav-logo-img { display: flex; align-items: center; }
+.nav-logo-img img { height: 36px; width: auto; object-fit: contain; }
