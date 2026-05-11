@@ -166,8 +166,9 @@ button { font-family: inherit; cursor: pointer; }
 
 /* ================================================ RÓLAM */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; padding: 64px 0; }
-.about-content-flex { display: flex; flex-direction: column; height: 100%; justify-content: space-between; position: relative; }
-.about-cert-inline { align-self: flex-end; width: 280px; margin-top: 24px; }
+.about-text-and-cert { display: flex; align-items: flex-end; gap: 32px; margin-top: 24px; }
+.about-text-part { flex: 1; }
+.about-cert-inline { width: 320px; flex-shrink: 0; }
 .about-grid > * { min-width: 0; overflow: hidden; }
 .about-img-wrap { position: relative; }
 .about-img-glow {
