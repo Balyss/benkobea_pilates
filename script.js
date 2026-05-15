@@ -11,7 +11,7 @@ const SESSIONS = [
   {
     id: 1,
     location: "Pilates Nyírpazony",
-    date: "2026-05-15",
+    date: "2027-05-15",
     startTime: "09:00",
     durationMin: 60,
     priceHuf: 2500,
@@ -21,7 +21,7 @@ const SESSIONS = [
   {
     id: 2,
     location: "Pilates Human-Net Ház",
-    date: "2026-05-10",
+    date: "2027-05-10",
     startTime: "10:00",
     durationMin: 60,
     priceHuf: 2500,
@@ -31,7 +31,7 @@ const SESSIONS = [
   {
     id: 3,
     location: "Pilates Rozsrétszőlő",
-    date: "2026-05-09",
+    date: "2027-05-09",
     startTime: "17:30",
     durationMin: 60,
     priceHuf: 2500,
@@ -41,7 +41,7 @@ const SESSIONS = [
   {
     id: 4,
     location: "Pilates Mentorállás",
-    date: "2026-05-09",
+    date: "2027-05-09",
     startTime: "17:00",
     durationMin: 60,
     priceHuf: 2500,
