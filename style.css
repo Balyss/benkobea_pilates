@@ -324,3 +324,36 @@ button { font-family: inherit; cursor: pointer; }
 /* Logó a navigációban */
 .nav-logo-img { display: flex; align-items: center; }
 .nav-logo-img img { height: 36px; width: auto; object-fit: contain; }
+
+/* ================================================ MOTION */
+
+.nav-hamburger span {
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+.nav-hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-hamburger.open span:nth-child(2) {
+  opacity: 0; transform: scaleX(0);
+}
+.nav-hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-links.open {
+  animation: navSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes navSlideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

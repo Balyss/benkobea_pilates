@@ -318,6 +318,7 @@ async function submitBooking() {
 
 function toggleMenu() {
   document.getElementById("navLinks").classList.toggle("open");
+  document.querySelector(".nav-hamburger").classList.toggle("open");
 }
 
 document.addEventListener("click", e => {
@@ -327,3 +328,30 @@ document.addEventListener("click", e => {
     if (links) links.classList.remove("open");
   }
 });
+
+/* ====================================================
+   7. SCROLL REVEAL ANIMÁCIÓ
+   ==================================================== */
+(function() {
+  const revealEls = document.querySelectorAll(
+    '.section-header, .page-header, .hero-badge, .hero-desc, .hero-buttons, .hero-stats, .about-img-wrap, .about-label'
+  );
+  revealEls.forEach(el => el.classList.add('reveal'));
+
+  const cardEls = document.querySelectorAll('.card, .loc-card, .session-row');
+  cardEls.forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = `${(i % 4) * 80}ms`;
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+})();
