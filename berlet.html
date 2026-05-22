@@ -178,6 +178,24 @@
       cursor: not-allowed;
     }
   </style>
+  <!-- Barion Pixel -->
+  <script>
+    window["bp"] = window["bp"] || function () {
+        (window["bp"].q = window["bp"].q || []).push(arguments);
+    };
+    window["bp"].l = 1 * new Date();
+    scriptElement = document.createElement("script");
+    firstScript = document.getElementsByTagName("script")[0];
+    scriptElement.async = true;
+    scriptElement.src = 'https://pixel.barion.com/bp.js';
+    firstScript.parentNode.insertBefore(scriptElement, firstScript);
+    window['barion_pixel_id'] = 'BP-MxNovwC6Vt-B2';
+    bp('init', 'addBarionPixelId', window['barion_pixel_id']);
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none" alt="Barion Pixel" src="https://pixel.barion.com/a.gif?ba_pixel_id=BP-MxNovwC6Vt-B2&ev=contentView&noscript=1">
+  </noscript>
+  <!-- End Barion Pixel -->
 </head>
 <body>
 
@@ -278,12 +296,31 @@
     </div>
   </div>
 
+  <div style="text-align: center; margin-top: 40px; padding: 20px; border: 1px solid var(--border); border-radius: var(--radius);">
+    <h4>Biztonságos bankkártyás fizetés Barionnal</h4>
+    <p style="font-size: 14px; color: var(--muted-fg); margin-bottom: 15px;">A kényelmes és biztonságos online fizetést a Barion Payment Zrt. biztosítja. MNB engedély száma: H-EN-I-1064/2013.</p>
+    <img src="https://pixel.barion.com/img/barion-logo-flat.png" alt="Barion logo" style="height: 40px; margin-bottom: 10px;">
+    <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+        <img src="https://pixel.barion.com/img/visa.png" alt="Visa" style="height: 25px;">
+        <img src="https://pixel.barion.com/img/mastercard.png" alt="Mastercard" style="height: 25px;">
+        <img src="https://pixel.barion.com/img/maestro.png" alt="Maestro" style="height: 25px;">
+        <img src="https://pixel.barion.com/img/amex.png" alt="American Express" style="height: 25px;">
+    </div>
+  </div>
+
 </div>
 
 <footer class="footer">
   <div class="container">
     <strong>Benkő Bea</strong> – Pilates · Gerinc Trainer · Senior Trainer<br>
     <span style="margin-top:6px;display:block">© 2026 · Minden jog fenntartva</span>
+    <div style="margin-top: 15px;">
+        <a href="aszf.html" style="color: inherit; text-decoration: underline; margin-right: 15px;">ÁSZF</a>
+        <a href="adatkezeles.html" style="color: inherit; text-decoration: underline;">Adatkezelési tájékoztató</a>
+    </div>
+    <div style="margin-top: 20px;">
+        <img src="https://pixel.barion.com/img/barion-logo-flat.png" alt="Barion logo" style="height: 30px;">
+    </div>
   </div>
 </footer>
 
