@@ -135,7 +135,6 @@
       <li><a href="berlet.html">Bérletek</a></li>
       <li><a href="online.html">Online Pilates</a></li>
       <li><a href="galeria.html" class="active">Galéria</a></li>
-      <li><a href="rolam.html">Rólam</a></li>
       <li><a href="orarend.html" class="nav-cta">Foglalj helyet</a></li>
     </ul>
     <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menü">
@@ -147,7 +146,7 @@
 <!-- TARTALOM -->
 <div class="container" style="padding-top: 64px; padding-bottom: 80px;">
 
-  <div class="page-header">
+  <div class="page-header reveal">
     <h1>Galéria</h1>
     <p>Képek és videók az óráinkról.</p>
   </div>
@@ -156,12 +155,12 @@
        IDE RAKD A KÉPEKET ÉS VIDEÓKAT!
 
        KÉP hozzáadása:
-       <div class="gallery-item" onclick="openLightbox('kepek/foto1.jpg', 'image')">
+       <div class="gallery-item reveal" onclick="openLightbox('kepek/foto1.jpg', 'image')">
          <img src="kepek/foto1.jpg" alt="Pilates óra">
        </div>
 
        VIDEÓ hozzáadása:
-       <div class="gallery-item" onclick="openLightbox('kepek/video1.mp4', 'video')">
+       <div class="gallery-item reveal" onclick="openLightbox('kepek/video1.mp4', 'video')">
          <video src="kepek/video1.mp4" muted playsinline></video>
          <div class="video-badge">▶ Videó</div>
        </div>
@@ -178,15 +177,15 @@
   <div class="gallery-grid" id="galleryGrid">
 
     <!-- PÉLDA ELEMEK – töröld ki és add hozzá a sajátjaid! -->
-    <div class="gallery-item" onclick="openLightbox('kepek/foto1.jpg', 'image')">
+    <div class="gallery-item reveal" onclick="openLightbox('kepek/foto1.jpg', 'image')">
       <img src="kepek/foto1.jpg" alt="Pilates óra 1"
         onerror="this.parentElement.style.display='none'">
     </div>
-    <div class="gallery-item" onclick="openLightbox('kepek/foto2.jpg', 'image')">
+    <div class="gallery-item reveal" onclick="openLightbox('kepek/foto2.jpg', 'image')">
       <img src="kepek/foto2.jpg" alt="Pilates óra 2"
         onerror="this.parentElement.style.display='none'">
     </div>
-    <div class="gallery-item" onclick="openLightbox('kepek/foto3.jpg', 'image')">
+    <div class="gallery-item reveal" onclick="openLightbox('kepek/foto3.jpg', 'image')">
       <img src="kepek/foto3.jpg" alt="Pilates óra 3"
         onerror="this.parentElement.style.display='none'">
     </div>
