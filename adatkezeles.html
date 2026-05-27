@@ -1,12 +1,81 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adatkezelési tájékoztató – Énidőm Beával Pilates</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adatkezelési tájékoztató – Énidőm Beával Pilates</title>
+<meta name="description" content="Adatkezelési tájékoztató – Benkőné Csikós Beáta egyéni vállalkozó">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<style>
+  .legal-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 64px 24px 80px;
+  }
+  .legal-wrap h1 {
+    font-size: 36px;
+    margin-bottom: 8px;
+  }
+  .legal-wrap .subtitle {
+    color: var(--muted-fg);
+    font-size: 14px;
+    margin-bottom: 48px;
+  }
+  .legal-wrap h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    color: var(--sage-deep);
+    margin-top: 40px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .legal-wrap p, .legal-wrap li {
+    font-size: 15px;
+    color: var(--muted-fg);
+    line-height: 1.8;
+    margin-bottom: 10px;
+  }
+  .legal-wrap ul {
+    padding-left: 20px;
+    margin-bottom: 16px;
+  }
+  .legal-wrap strong {
+    color: var(--foreground);
+  }
+  .info-box {
+    background: var(--sage-light);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .info-box p { margin-bottom: 4px; }
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 14px;
+  }
+  .data-table th {
+    background: var(--sage-light);
+    color: var(--sage-deep);
+    font-weight: 600;
+    padding: 10px 14px;
+    text-align: left;
+    border: 1px solid var(--border);
+  }
+  .data-table td {
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    color: var(--muted-fg);
+    vertical-align: top;
+  }
+</style>
 </head>
 <body>
+
 <nav class="nav">
   <div class="container nav-inner">
     <a href="index.html" class="nav-logo">ÉNIDŐM Beával <em>Pilates</em></a>
@@ -18,29 +87,111 @@
       <li><a href="rolam.html">Rólam</a></li>
       <li><a href="orarend.html" class="nav-cta">Foglalj helyet</a></li>
     </ul>
+    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
-<div class="container" style="padding-top: 64px; padding-bottom: 80px;">
+<div class="legal-wrap">
+
   <h1>Adatkezelési tájékoztató</h1>
-  <div style="line-height: 1.6; color: var(--foreground);">
-    <p>Ez a tájékoztató leírja, hogyan kezeljük személyes adataidat a weboldal használata során.</p>
-    
-    <h2>1. Adatkezelő adatai</h2>
-    <p>Benkő Bea (enidombeaval@gmail.com, +36 70 905 6148)</p>
+  <p class="subtitle">Hatályos: 2025. január 1-től · Az EU 2016/679 rendelet (GDPR) alapján</p>
 
-    <h2>2. Kezelt adatok köre</h2>
-    <p>A vásárlás során megadott név, email cím, számlázási adatok. A bankkártya adatokat a Barion Payment Zrt. kezeli.</p>
-
-    <h2>3. Barion Pixel</h2>
-    <p>A weboldalon a Barion Pixel mérőkódja fut. Ez a kód segít nekünk a felhasználói élmény javításában és a csalások megelőzésében. A Barion Pixel használatával kapcsolatos további információkat a Barion oldalán találod.</p>
-
-    <h2>4. Az adatkezelés célja</h2>
-    <p>A megrendelések teljesítése, számlázás, kapcsolattartás és a weboldal látogatottságának elemzése.</p>
-
-    <h2>5. Jogok</h2>
-    <p>Bármikor kérheted adataid törlését vagy módosítását az adatkezelő elérhetőségein.</p>
+  <h2>1. Az adatkezelő adatai</h2>
+  <div class="info-box">
+    <p><strong>Adatkezelő neve:</strong> Benkőné Csikós Beáta egyéni vállalkozó</p>
+    <p><strong>Adószám:</strong> 49184901-1-35</p>
+    <p><strong>Székhely:</strong> 4531 Nyírpazony, Petőfi utca 7/B</p>
+    <p><strong>E-mail:</strong> enidombeaval@gmail.com</p>
+    <p><strong>Telefon:</strong> +36 70 905 6148</p>
+    <p><strong>Weboldal:</strong> enidombeaval.hu</p>
   </div>
+
+  <h2>2. Az adatkezelés célja és jogalapja</h2>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Adatkezelés célja</th>
+        <th>Kezelt adatok</th>
+        <th>Jogalap</th>
+        <th>Megőrzési idő</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Órafoglalás kezelése</td>
+        <td>Teljes név, e-mail cím, telefonszám, megjegyzés</td>
+        <td>Szerződés teljesítése (GDPR 6. cikk (1) b)</td>
+        <td>5 év</td>
+      </tr>
+      <tr>
+        <td>Visszaigazoló e-mail küldése</td>
+        <td>Teljes név, e-mail cím, foglalás részletei</td>
+        <td>Szerződés teljesítése (GDPR 6. cikk (1) b)</td>
+        <td>5 év</td>
+      </tr>
+      <tr>
+        <td>Online fizetés (Barion)</td>
+        <td>Tranzakciós adatok (a Barion kezeli)</td>
+        <td>Jogi kötelezettség (GDPR 6. cikk (1) c)</td>
+        <td>8 év (számviteli törvény)</td>
+      </tr>
+      <tr>
+        <td>Bérlet nyilvántartás</td>
+        <td>Név, felhasznált alkalmak száma</td>
+        <td>Szerződés teljesítése (GDPR 6. cikk (1) b)</td>
+        <td>5 év</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. Adattovábbítás – Barion fizetési rendszer</h2>
+  <p>Online bankkártyás fizetés esetén az érintett fizetési adatait a <strong>Barion Payment Zrt.</strong> kezeli.</p>
+  <div class="info-box">
+    <p><strong>Barion Payment Zrt.</strong></p>
+    <p><strong>Székhely:</strong> 1117 Budapest, Infopark sétány 1. I. épület</p>
+    <p><strong>Adószám:</strong> 25353192-2-43</p>
+    <p><strong>Weboldal:</strong> <a href="https://www.barion.com" target="_blank" style="color:var(--sage-deep)">www.barion.com</a></p>
+    <p><strong>Adatvédelmi tájékoztató:</strong> <a href="https://www.barion.com/hu/adatvedelmi-szabalyzat/" target="_blank" style="color:var(--sage-deep)">barion.com/hu/adatvedelmi-szabalyzat</a></p>
+  </div>
+  <p>A Barion MNB engedéllyel rendelkező elektronikuspénz-kibocsátó intézet. A bankkártya adatok az Adatkezelőhöz nem jutnak el.</p>
+
+  <h2>4. Adattovábbítás – EmailJS</h2>
+  <p>A foglalási értesítők küldéséhez az <strong>EmailJS</strong> szolgáltatást (EmailJS Ltd., Egyesült Királyság) használjuk. A foglaláskor megadott név és e-mail cím az értesítő küldéséhez szükséges mértékben kerül továbbításra. Az adatok az értesítő elküldése után törlésre kerülnek az EmailJS rendszeréből.</p>
+
+  <h2>5. Cookie-k (sütik)</h2>
+  <p>A weboldal <strong>nem használ</strong> marketing vagy nyomkövető cookie-kat. A Barion fizetési oldal saját cookie-kat alkalmazhat; ezekre a Barion adatvédelmi tájékoztatója vonatkozik.</p>
+  <p>A weboldal a foglalások nyomon követéséhez <strong>localStorage</strong> technológiát alkalmaz, amely kizárólag a felhasználó eszközén tárol adatot, és harmadik félnek nem kerül továbbításra.</p>
+
+  <h2>6. Az érintett jogai</h2>
+  <p>A GDPR alapján az érintett az alábbi jogokkal rendelkezik:</p>
+  <ul>
+    <li><strong>Hozzáférés joga:</strong> tájékoztatást kérhet az általunk kezelt adatairól</li>
+    <li><strong>Helyesbítés joga:</strong> kérheti a pontatlan adatok kijavítását</li>
+    <li><strong>Törlés joga:</strong> kérheti az adatok törlését (kivéve ha jogszabályi kötelezettség alapján meg kell őrizni)</li>
+    <li><strong>Adatkezelés korlátozásának joga</strong></li>
+    <li><strong>Adathordozhatóság joga</strong></li>
+    <li><strong>Tiltakozás joga</strong></li>
+  </ul>
+  <p>Jogai gyakorlásához kérjük, írjon az <strong>enidombeaval@gmail.com</strong> e-mail címre. Kérelmére 30 napon belül válaszolunk.</p>
+
+  <h2>7. Jogorvoslat</h2>
+  <p>Ha úgy véli, hogy adatkezelésünk sérti a GDPR-t, panaszt nyújthat be a <strong>Nemzeti Adatvédelmi és Információszabadság Hatósághoz (NAIH)</strong>:</p>
+  <div class="info-box">
+    <p><strong>Cím:</strong> 1055 Budapest, Falk Miksa utca 9-11.</p>
+    <p><strong>Postacím:</strong> 1363 Budapest, Pf.: 9.</p>
+    <p><strong>Telefon:</strong> +36 1 391 1400</p>
+    <p><strong>E-mail:</strong> ugyfelszolgalat@naih.hu</p>
+    <p><strong>Weboldal:</strong> <a href="https://www.naih.hu" target="_blank" style="color:var(--sage-deep)">www.naih.hu</a></p>
+  </div>
+
+  <h2>8. Adatbiztonság</h2>
+  <p>Az Adatkezelő megfelelő technikai és szervezési intézkedésekkel gondoskodik a személyes adatok biztonságáról, védelméről a jogosulatlan hozzáférés, megváltoztatás, továbbítás, törlés vagy megsemmisítés ellen.</p>
+
+  <h2>9. Tájékoztató módosítása</h2>
+  <p>Az Adatkezelő fenntartja a jelen tájékoztató módosításának jogát. A módosítás a weboldalon való közzététellel lép hatályba.</p>
+
 </div>
 
 <footer class="footer">
@@ -48,14 +199,12 @@
     <strong>Benkő Bea</strong> – Pilates · Gerinc Trainer · Senior Trainer<br>
     <span style="margin-top:6px;display:block">© 2026 · Minden jog fenntartva</span>
     <div style="margin-top: 15px;">
-        <a href="aszf.html" style="color: inherit; text-decoration: underline; margin-right: 15px;">ÁSZF</a>
-        <a href="adatkezeles.html" style="color: inherit; text-decoration: underline;">Adatkezelési tájékoztató</a>
-    </div>
-    <div style="margin-top: 20px; text-align: center;">
-        <img src="kepek/barion-smart-light.png" alt="Barion Smart Payment" style="height: 40px;">
+      <a href="aszf.html" style="color: inherit; text-decoration: underline; margin-right: 15px;">ÁSZF</a>
+      <a href="adatkezeles.html" style="color: inherit; text-decoration: underline;">Adatkezelési tájékoztató</a>
     </div>
   </div>
 </footer>
+
 <script src="script.js"></script>
 </body>
 </html>
