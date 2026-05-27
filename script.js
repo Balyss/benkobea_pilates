@@ -330,6 +330,39 @@ document.addEventListener("click", e => {
 });
 
 /* ====================================================
+   NAV JAVÍTÁSOK
+   1. Főoldal menüpont eltávolítása (ha régi szerverrel kerül elő)
+   2. Rólam ne tűnjön el (overflow fix)
+   3. "Foglalj helyet" gomb szöveg középre
+   ==================================================== */
+(function() {
+  // 1. Főoldal eltávolítása
+  document.querySelectorAll(".nav-links li").forEach(li => {
+    if (li.textContent.trim() === "Főoldal") li.remove();
+  });
+
+  // 2 + 3. CSS fix injektálása
+  const style = document.createElement("style");
+  style.textContent = `
+    .nav-links {
+      overflow: visible !important;
+    }
+    .nav-inner {
+      overflow: visible;
+    }
+    .nav-cta {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      line-height: 1 !important;
+      text-align: center !important;
+    }
+  `;
+  document.head.appendChild(style);
+})();
+
+
+/* ====================================================
    7. SCROLL REVEAL ANIMÁCIÓ
    ==================================================== */
 (function() {
