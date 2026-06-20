@@ -6,24 +6,24 @@
   <title>Rólam – Benkő Bea Pilates</title>
   <meta name="description" content="Ismerd meg Benkő Beát, Pilates oktatót.">
   <link rel="stylesheet" href="style.css">
-  <!-- Barion Pixel -->
+  <!-- Stripe Pixel -->
   <script>
-    window["bp"] = window["bp"] || function () {
+    // Stripe tracking code
         (window["bp"].q = window["bp"].q || []).push(arguments);
     };
     window["bp"].l = 1 * new Date();
     scriptElement = document.createElement("script");
     firstScript = document.getElementsByTagName("script")[0];
     scriptElement.async = true;
-    scriptElement.src = 'https://pixel.barion.com/bp.js';
+    // Stripe tracking enabled
     firstScript.parentNode.insertBefore(scriptElement, firstScript);
-    window['barion_pixel_id'] = 'BP-MxNovwC6Vt-B2';
-    bp('init', 'addBarionPixelId', window['barion_pixel_id']);
+    
+    
   </script>
   <noscript>
-    <img height="1" width="1" style="display:none" alt="Barion Pixel" src="https://pixel.barion.com/a.gif?ba_pixel_id=BP-MxNovwC6Vt-B2&ev=contentView&noscript=1">
+    
   </noscript>
-  <!-- End Barion Pixel -->
+  <!-- End Stripe Pixel -->
 </head>
 <body>
 
@@ -124,7 +124,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCertLig
         <a href="adatkezeles.html" style="color: inherit; text-decoration: underline;">Adatkezelési tájékoztató</a>
     </div>
     <div style="margin-top: 20px; text-align: center;">
-        <img src="kepek/barion-smart-light.png" alt="Barion Smart Payment" style="height: 40px;">
+        <img src="kepek/stripe-badge.png" alt="Stripe Payment" style="height: 40px;">
     </div>
   </div>
 </footer>

@@ -164,8 +164,8 @@
       line-height: 1.7;
     }
 
-    /* Placeholder gomb ha nincs még Barion link */
-    .no-barion {
+    /* Placeholder gomb ha nincs m.g Stripe link */
+    .no-stripe {
       display: block;
       width: 100%;
       padding: 14px;
@@ -178,24 +178,24 @@
       cursor: not-allowed;
     }
   </style>
-  <!-- Barion Pixel -->
+  <!-- Stripe Pixel -->
   <script>
-    window["bp"] = window["bp"] || function () {
+    // Stripe tracking code
         (window["bp"].q = window["bp"].q || []).push(arguments);
     };
     window["bp"].l = 1 * new Date();
     scriptElement = document.createElement("script");
     firstScript = document.getElementsByTagName("script")[0];
     scriptElement.async = true;
-    scriptElement.src = 'https://pixel.barion.com/bp.js';
+    // Stripe tracking enabled
     firstScript.parentNode.insertBefore(scriptElement, firstScript);
-    window['barion_pixel_id'] = 'BP-MxNovwC6Vt-B2';
-    bp('init', 'addBarionPixelId', window['barion_pixel_id']);
+    
+    
   </script>
   <noscript>
-    <img height="1" width="1" style="display:none" alt="Barion Pixel" src="https://pixel.barion.com/a.gif?ba_pixel_id=BP-MxNovwC6Vt-B2&ev=contentView&noscript=1">
+    
   </noscript>
-  <!-- End Barion Pixel -->
+  <!-- End Stripe Pixel -->
 </head>
 <body>
 
@@ -238,10 +238,10 @@
         <li>Azonnali visszaigazolás emailben</li>
       </ul>
       <!--
-        HA MEGVAN A BARION LINK, cseréld ki ezt a gombot:
-        <a href="BARION_LINK_IDE" class="berlet-btn" target="_blank">Megveszem →</a>
+        HA MEGVAN A STRIPE LINK, cseréld ki ezt a gombot:
+        <a href="STRIPE_LINK_IDE" class="berlet-btn" target="_blank">Megveszem →</a>
       -->
-      <span class="no-barion">Hamarosan elérhető</span>
+      <span class="no-stripe">Hamarosan elérhető</span>
     </div>
 
     <!-- 5 ALKALMAS -->
@@ -259,10 +259,10 @@
         <li>Alkalmak nyomon követése</li>
       </ul>
       <!--
-        HA MEGVAN A BARION LINK, cseréld ki ezt a gombot:
-        <a href="BARION_LINK_IDE" class="berlet-btn" target="_blank">Megveszem →</a>
+        HA MEGVAN A STRIPE LINK, cseréld ki ezt a gombot:
+        <a href="STRIPE_LINK_IDE" class="berlet-btn" target="_blank">Megveszem →</a>
       -->
-      <span class="no-barion">Hamarosan elérhető</span>
+      <span class="no-stripe">Hamarosan elérhető</span>
     </div>
 
     <!-- 10 ALKALMAS -->
@@ -279,10 +279,10 @@
         <li>Alkalmak nyomon követése</li>
       </ul>
       <!--
-        HA MEGVAN A BARION LINK, cseréld ki ezt a gombot:
-        <a href="BARION_LINK_IDE" class="berlet-btn" target="_blank">Megveszem →</a>
+        HA MEGVAN A STRIPE LINK, cseréld ki ezt a gombot:
+        <a href="STRIPE_LINK_IDE" class="berlet-btn" target="_blank">Megveszem →</a>
       -->
-      <span class="no-barion">Hamarosan elérhető</span>
+      <span class="no-stripe">Hamarosan elérhető</span>
     </div>
 
   </div>
@@ -297,10 +297,10 @@
   </div>
 
   <div class="reveal" style="text-align: center; margin-top: 40px; padding: 20px; border: 1px solid var(--border); border-radius: var(--radius);">
-    <h4>Biztonságos bankkártyás fizetés Barionnal</h4>
-    <p style="font-size: 14px; color: var(--muted-fg); margin-bottom: 15px;">A kényelmes és biztonságos online fizetést a Barion Payment Zrt. biztosítja. MNB engedély száma: H-EN-I-1064/2013.</p>
+    <h4>Biztonságos bankkártyás fizetés Stripe-pal</h4>
+    <p style="font-size: 14px; color: var(--muted-fg); margin-bottom: 15px;">A kényelmes és biztonságos online fizetést a Stripe, Inc. biztosítja. A Stripe nemzetközileg elismert fizetési feldolgozó.</p>
     <div style="text-align: center;">
-        <img src="kepek/barion-smart-light.png" alt="Barion Smart Payment" style="max-height: 40px; width: auto; margin-bottom: 10px; display: inline-block;">
+        <img src="kepek/stripe-badge.png" alt="Stripe Payment" style="max-height: 40px; width: auto; margin-bottom: 10px; display: inline-block;">
     </div>
   </div>
 
@@ -315,7 +315,7 @@
         <a href="adatkezeles.html" style="color: inherit; text-decoration: underline;">Adatkezelési tájékoztató</a>
     </div>
     <div style="margin-top: 20px; text-align: center;">
-        <img src="kepek/barion-smart-light.png" alt="Barion Smart Payment" style="height: 40px;">
+        <img src="kepek/stripe-badge.png" alt="Stripe Payment" style="height: 40px;">
     </div>
   </div>
 </footer>

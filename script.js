@@ -51,14 +51,14 @@ const SESSIONS = [
 ];
 
 /*
-   BARION FIZETÉSI LINKEK
-   Ha megvan a Barion fiókod, ide írd be az egyes
-   időpontokhoz tartozó fizetési linkeket.
+   STRIPE FIZETÉSI LINKEK
+   Ha megvan a Stripe fiókod, ide írd be az egyes
+   időpontokhoz tartozó Stripe Checkout linkeket.
    Ha még nincs, hagyd üresen ("") – ilyenkor csak
    a készpénzes opció jelenik meg.
 */
-const BARION_LINKS = {
-  1: "", // Nyírpazony – pl. "https://secure.barion.com/Pay?Id=xxx"
+const STRIPE_LINKS = {
+  1: "", // Nyírpazony – pl. "https://checkout.stripe.com/pay/cs_live_xxx"
   2: "", // Human-Net Ház
   3: "", // Rozsrétszőlő
   4: "", // Mentorállás
@@ -211,9 +211,9 @@ function openModal(sessionId) {
   document.getElementById("modalSessionDetails").textContent =
     `${formatDate(selectedSession.date)} · ${selectedSession.startTime} · ${freeSpots} szabad hely · ${formatHUF(selectedSession.priceHuf)}`;
 
-  // Kártyás fizetés csak ha van Barion link
-  const hasBarion = !!BARION_LINKS[selectedSession.id];
-  document.getElementById("paymentCard").style.display = hasBarion ? "flex" : "none";
+  // Kártyás fizetés csak ha van Stripe link
+  const hasStripe = !!STRIPE_LINKS[selectedSession.id];
+  document.getElementById("paymentCard").style.display = hasStripe ? "flex" : "none";
   document.getElementById("paymentCash").checked = true;
 
   // Form reset
@@ -299,9 +299,9 @@ async function submitBooking() {
     document.getElementById("successBox").style.display = "block";
     btn.textContent = "Elküldve ✓";
 
-    // Ha kártyás fizetést választott → nyisd meg a Barion linket
-    if (!paymentCash && BARION_LINKS[selectedSession.id]) {
-      window.open(BARION_LINKS[selectedSession.id], "_blank");
+    // Ha kártyás fizetést választott → nyisd meg a Stripe Checkout linket
+    if (!paymentCash && STRIPE_LINKS[selectedSession.id]) {
+      window.open(STRIPE_LINKS[selectedSession.id], "_blank");
     }
   } catch (err) {
     console.error("EmailJS hiba:", err);
