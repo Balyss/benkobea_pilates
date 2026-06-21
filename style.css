@@ -338,6 +338,7 @@ button { font-family: inherit; cursor: pointer; }
   .about-name { font-size: 36px; }
   .about-bio { font-size: 15px; }
   .about-img-wrap img { aspect-ratio: 4/3; max-height: 320px; }
+  .modal { padding: 32px 20px; margin-top: 20px; margin-bottom: 20px; }
 }
 /* Logó a navigációban */
 .nav-logo-img { display: flex; align-items: center; }
