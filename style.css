@@ -228,7 +228,12 @@ button { font-family: inherit; cursor: pointer; }
 .modal-overlay {
   display: none; position: fixed; inset: 0;
   background: rgba(30,35,28,0.5); backdrop-filter: blur(4px);
-  z-index: 200; align-items: center; justify-content: center; padding: 20px;
+  z-index: 200; 
+  align-items: flex-start; /* Fentről kezdi az igazítást, hogy görgethető legyen */
+  justify-content: center; 
+  padding: 20px;
+  overflow-y: auto; /* Görgetés engedélyezése */
+  -webkit-overflow-scrolling: touch; /* Sima görgetés iOS-en */
 }
 .modal-overlay.open { display: flex; }
 .modal {
@@ -236,6 +241,8 @@ button { font-family: inherit; cursor: pointer; }
   max-width: 480px; width: 100%; position: relative;
   box-shadow: 0 24px 80px rgba(0,0,0,0.15);
   animation: modalIn 0.25s ease;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 @keyframes modalIn { from { opacity:0; transform: translateY(16px); } to { opacity:1; transform: translateY(0); } }
 .modal-close {
@@ -338,7 +345,12 @@ button { font-family: inherit; cursor: pointer; }
   .about-name { font-size: 36px; }
   .about-bio { font-size: 15px; }
   .about-img-wrap img { aspect-ratio: 4/3; max-height: 320px; }
-  .modal { padding: 32px 20px; margin-top: 20px; margin-bottom: 20px; }
+  .modal { 
+    padding: 32px 20px; 
+    margin-top: 20px; 
+    margin-bottom: 40px; /* Extra hely az alján az iPhone Home bar miatt */
+    max-height: none; /* Biztosítjuk, hogy ne legyen korlátozva a magasság */
+  }
 }
 /* Logó a navigációban */
 .nav-logo-img { display: flex; align-items: center; }
