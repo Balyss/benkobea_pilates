@@ -346,11 +346,17 @@ button { font-family: inherit; cursor: pointer; }
   .about-bio { font-size: 15px; }
   .about-img-wrap img { aspect-ratio: 4/3; max-height: 320px; }
   .modal { 
-    padding: 32px 20px; 
+    padding: 24px 16px; 
     margin-top: 20px; 
-    margin-bottom: 40px; /* Extra hely az alján az iPhone Home bar miatt */
-    max-height: none; /* Biztosítjuk, hogy ne legyen korlátozva a magasság */
+    margin-bottom: 60px; /* Még több hely az alján */
+    max-height: none;
+    width: 92%; /* Kicsit keskenyebb, hogy kényelmesebb legyen */
   }
+  .form-group input, .form-group select, .form-group textarea {
+    font-size: 16px !important; /* Megakadályozza az automatikus iOS zoomot */
+  }
+  .modal h2 { font-size: 22px; }
+  .modal-session-info strong { font-size: 15px; }
 }
 /* Logó a navigációban */
 .nav-logo-img { display: flex; align-items: center; }
